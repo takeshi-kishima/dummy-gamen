@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>変化する画面</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: 'Arial', sans-serif;
+      }
+
+      #container {
+        width: 300px;
+        height: 200px;
+        background-color: lightblue;
+        text-align: center;
+        line-height: 200px;
+        font-size: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 1s, transform 1s;
+        margin-bottom: 20px;
+      }
+
+      #container:hover {
+        transform: scale(1.05);
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+
+      .button-container button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button-container button:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">表示1</div>
+    <div class="button-container">
+      <button id="button1">ボタン1</button>
+      <button id="button2">ボタン2</button>
+      <button id="button3">ボタン3</button>
+    </div>
+    <script>
+      const container = document.getElementById("container");
+      const contents = ["表示1", "表示2", "表示3"];
+      const colors = ["lightblue", "lightgreen", "lightcoral"];
+      let index = 0;
+
+      setInterval(() => {
+        container.textContent = contents[index];
+        container.style.backgroundColor = colors[index];
+        index = (index + 1) % contents.length;
+      }, 5000);
+
+      document.getElementById("button1").addEventListener("click", () => {
+        console.log("ボタン1が押されました");
+      });
+
+      document.getElementById("button2").addEventListener("click", () => {
+        console.log("ボタン2が押されました");
+      });
+
+      document.getElementById("button3").addEventListener("click", () => {
+        console.log("ボタン3が押されました");
+      });
+    </script>
+  </body>
+</html>
